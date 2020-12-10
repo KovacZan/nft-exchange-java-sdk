@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'io.kovac.nft.exchange'
+version '1.0.beta'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    implementation 'com.github.KovacZan:ark-java-crypto:1.0.beta'
+    implementation 'com.github.KovacZan:ark-java-client:1.0.beta'
+}
+
+test {
+    useJUnitPlatform()
+}
