@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 import io.kovac.nft.exchange.crypto.builders.NFTAuctionBuilder;
+import io.kovac.nft.exchange.crypto.builders.NFTBidBuilder;
 import org.arkecosystem.client.Connection;
 import org.arkecosystem.crypto.configuration.Network;
 import org.arkecosystem.crypto.identities.Address;
@@ -13,7 +14,7 @@ import org.arkecosystem.crypto.transactions.types.Transaction;
 import java.io.IOException;
 import java.util.*;
 
-public class NFTAuction {
+public class NFTBid {
 
     public static long getNonce(Connection connection, String senderWallet) throws IOException {
         return Long.valueOf (((Map<String, Object>) connection.api().wallets.show(senderWallet).get("data")).get("nonce").toString());
@@ -28,14 +29,14 @@ public class NFTAuction {
 
         Connection connection = new Connection(map);
 
-        long nonce = getNonce(connection, Address.fromPassphrase("clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire")) + 1;
+        long nonce = getNonce(connection, Address.fromPassphrase("venue below waste gather spin cruise title still boost mother flash tuna")) + 1;
 
         List payload = new ArrayList<>();
 
-        Transaction transaction = new NFTAuctionBuilder()
+        Transaction transaction = new NFTBidBuilder()
                 .nonce(nonce)
-                .NFTAuctionAsset(Collections.singletonList("4415e0d5cb8d3788d96ab22306efb786ada93633d82bbc4114fee5e10ab6db7f"), 100L, 100000)
-                .sign("clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire")
+                .NFTBidAsset("e8a6c48b4496babaeeec29be7731db8f04493285e5c440793a47142621b16eca", 1000L)
+                .sign("venue below waste gather spin cruise title still boost mother flash tuna")
                 .transaction;
 
 
