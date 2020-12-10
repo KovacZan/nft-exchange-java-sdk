@@ -3,7 +3,7 @@ package io.kovac.nft.exchange.examples;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
-import io.kovac.nft.exchange.crypto.builders.NFTAuctionBuilder;
+import io.kovac.nft.exchange.crypto.builders.NFTAuctionCancelBuilder;
 import org.arkecosystem.client.Connection;
 import org.arkecosystem.crypto.configuration.Network;
 import org.arkecosystem.crypto.identities.Address;
@@ -11,9 +11,12 @@ import org.arkecosystem.crypto.networks.Testnet;
 import org.arkecosystem.crypto.transactions.types.Transaction;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class NFTAuction {
+public class NFTAuctionCancel {
 
     public static long getNonce(Connection connection, String senderWallet) throws IOException {
         return Long.valueOf (((Map<String, Object>) connection.api().wallets.show(senderWallet).get("data")).get("nonce").toString());
@@ -32,9 +35,9 @@ public class NFTAuction {
 
         List payload = new ArrayList<>();
 
-        Transaction transaction = new NFTAuctionBuilder()
+        Transaction transaction = new NFTAuctionCancelBuilder()
                 .nonce(nonce)
-                .NFTAuctionAsset(Collections.singletonList("510f5108694fdbac018e4b25abe5a67c34a90d18c7fce3da62fbec104f65f7e3"), 100L, 100000)
+                .NFTAuctionCancelAsset("dc4f3b9d4807ae5030a9067b952c53a96fe877237c5a05326771ffe6825718bd")
                 .sign("clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire")
                 .transaction;
 
