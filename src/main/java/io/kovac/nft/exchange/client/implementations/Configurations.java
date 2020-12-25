@@ -17,6 +17,6 @@ public class Configurations implements IConfigurations {
 
     @Override
     public Map<String, Object> all() throws IOException {
-        throw new NotImplementedException();
+        return this.client.get("configurations");
     }
 }
